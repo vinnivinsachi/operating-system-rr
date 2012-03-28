@@ -1,0 +1,146 @@
+@import '../../rialtoPublicLibrary/stylesheets/less/main.less'; // RIALTO PUBLIC LIBRARY STYLES
+
+/***** Attributes Order
+** postition / float
+** width / height
+** margins / padding
+** borders
+** backgrounds
+** content
+** z-index
+*****/
+
+/* ============================================= GENERAL ====================================== */
+body {
+	background: #F8EFEE url("@{dirImages}/bg.gif") repeat top center;
+}
+
+#wrapper {
+	display: block;
+	width: 960px;
+	margin: 0px auto;
+	padding: 10px;
+}
+
+
+/* ============================================= HEADER ====================================== */
+header {
+	display: block;
+	margin: 0px 0px 10px 0px;
+}
+
+
+/* ============================================= NAV ====================================== */
+nav.nav-main {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	display: block;
+	padding: 0px;
+	
+	ul {
+		visibility: hidden;
+		opacity: 0;
+		position: absolute;
+		top: 100%;
+		left: 0px;
+		width: auto;
+		margin: 0px;
+		padding: 4px 0px;
+		list-style-type: none;
+		background-color: @bgColorInverted;
+		z-index: 100;
+		.rounded-corners(0px, 4px, 4px, 4px);
+		.box-shadow(1px, 1px, 1px);
+		.transition();
+		
+		li {
+			position: relative;
+			width: 150px;
+			margin: 0px;
+			padding: 0px;
+			.transition();
+			&:hover {
+				a {
+					color: @colorInverted;
+				}
+				background: @bgColorInverted;
+			}
+
+			a {
+				display: block;
+				height: 20px;
+				padding: 10px;
+			}
+			
+			&:hover {
+				> ul {
+					visibility: visible;
+					opacity: 1;
+				}
+			}
+		}
+	}
+	
+	> ul {
+		visibility: visible;
+		opacity: 1;
+		position: relative;
+		top: 0px;
+		left: 0px;
+		width: auto;
+		padding: 0px;
+		border: 3px double #DAD2D2;
+		border-left: none;
+		border-right: none;
+		background-color: transparent;
+		.rounded-corners(0px, 0px, 0px, 0px);
+		.box-shadow(0px, 0px, 0px);
+		
+		> li {
+			display: inline-block;
+			width: auto;
+			.rounded-corners(4px, 4px, 0px, 0px);
+		}
+	}	
+}
+
+.title-box {
+	margin: 0px;
+	vertical-align: top;
+	.rounded-corners();
+	> h1 {
+		height: 24px;
+		padding: 8px 10px 0px 5px;
+		margin: 0px;
+		font-style: normal;
+		border-bottom: 1px solid @colorLine;
+		background-color: @bgColor2;
+		.font-style(@colorAccent, 1.167em, bold);
+		.rounded-corners(5px, 5px, 0px, 0px);
+		vertical-align: middle;
+	}
+	.title-box-content { padding: 5px; }
+}
+
+
+
+
+
+/* ============================================= FOOTER ====================================== */
+footer {
+	position: relative;
+	
+	nav.nav-main {
+		font-size: @fontSizeSmall;
+		
+		ul {
+			text-align: center;
+			border-bottom: none;
+		}
+	}
+	
+	.copyright {
+		position: absolute;
+		top: 10px;
+		right: 10px
+	}
+}

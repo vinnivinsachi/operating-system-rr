@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<design1>
+	<blue>
+		<leather>
+			<heel1 qty="1"/>
+			<heel2 qty="2"/>
+		</leather>
+		
+	</blue>
+	<red>
+		<cotton>
+			<heel1 qty="2"/>
+		</cotton>
+	</red>
+	<orange>
+		<leather>
+			
+			<heel2 qty="5"/>
+		</leather>
+	</orange>
+</design1>

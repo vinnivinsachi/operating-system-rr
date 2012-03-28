@@ -1,0 +1,13 @@
+application/configs/local_settings.ini
+tmp
+tmp/
+tmp/*
+tmp/*/*
+logs
+logs/
+logs/*
+logs/*/*
+build
+build/
+build/*
+build/*/*

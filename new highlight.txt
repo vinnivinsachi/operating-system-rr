@@ -1,0 +1,16 @@
+//this is custom dr highlight effects
+rHighlight: function(start, end, durations){
+	if (!end){
+		end = this.retrieve('hightlight:original', this.getStyle('background-color'));
+		end = (end == 'transparent') ? '#fff' : end;
+	}
+	
+	this.set('tween', {duration: durations});
+	var tween = this.get('tween');
+	
+	tween.start('background-color', start || '#ffff88', end).chain(function(){
+		this.setStyle('background-color', this.retrieve('highlight:original'));
+		tween.callChain();
+	}.bind(this));
+	return this;
+}

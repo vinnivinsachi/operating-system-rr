@@ -1,0 +1,6 @@
+[submodule "library"]
+	path = library
+	url = git@github.com:NovumWare/Zend_Library.git
+[submodule "public/rialtoPublicLibrary"]
+	path = public/rialtoPublicLibrary
+	url = git@github.com:NovumWare/Rialto_Public_Library.git
