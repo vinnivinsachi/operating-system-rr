@@ -6,6 +6,12 @@
 				<li><a href='{$siteRoot}/round-robin/index'>Example</a></li>
 			</ul>
 		</li>
+		<li>
+			<a href='{$siteRoot}/online-chat'>Online Chat</a>
+			<ul>
+				<li><a href='{$siteRoot}/online-chat/index'>Example</a></li>
+			</ul>
+		</li>
 		<!--  <li>
 			<a href='{$siteRoot}/s-j-f'>SJF</a>
 			<ul>

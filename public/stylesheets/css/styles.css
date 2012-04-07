@@ -91,6 +91,26 @@
   -webkit-box-flex: 5;
   box-flex: 5;
 }
+.box-pack-start {
+  box-pack: start;
+  -moz-box-pack: start;
+  -webkit-box-pack: start;
+}
+.box-pack-center {
+  box-pack: center;
+  -moz-box-pack: center;
+  -webkit-box-pack: center;
+}
+.box-pack-end {
+  box-pack: end;
+  -moz-box-pack: end;
+  -webkit-box-pack: end;
+}
+.box-pack-justify {
+  box-pack: justify;
+  -moz-box-pack: justify;
+  -webkit-box-pack: justify;
+}
 .no-padding {
   padding: 0px !important;
 }
@@ -434,7 +454,7 @@
   height: 16px;
   margin: 0px;
   padding: 0px;
-  background-image: url("/Sites/zend_basic/public/rialtoPublicLibrary/images/icons.png");
+  background-image: url("/Sites/ClassProject/public/rialtoPublicLibrary/images/icons.png");
   background-repeat: no-repeat;
 }
 .icon-arrow-down {
@@ -668,11 +688,11 @@
   height: 16px;
   margin: 0px;
   padding: 0px;
-  background-image: url("/Sites/zend_basic/public/rialtoPublicLibrary/images/icons.png");
+  background-image: url("/Sites/ClassProject/public/rialtoPublicLibrary/images/icons.png");
   background-repeat: no-repeat;
   width: 26px;
   height: 26px;
-  background-image: url("/Sites/zend_basic/public/rialtoPublicLibrary/images/icons-medium.png");
+  background-image: url("/Sites/ClassProject/public/rialtoPublicLibrary/images/icons-medium.png");
 }
 .icon-medium-x {
   background-position: 0px 0px;
@@ -697,11 +717,11 @@
   height: 16px;
   margin: 0px;
   padding: 0px;
-  background-image: url("/Sites/zend_basic/public/rialtoPublicLibrary/images/icons.png");
+  background-image: url("/Sites/ClassProject/public/rialtoPublicLibrary/images/icons.png");
   background-repeat: no-repeat;
   width: 34px;
   height: 34px;
-  background-image: url("/Sites/zend_basic/public/rialtoPublicLibrary/images/icons-large.png");
+  background-image: url("/Sites/ClassProject/public/rialtoPublicLibrary/images/icons-large.png");
 }
 .icon-large-compare-chart {
   background-position: 0px 0px;
@@ -816,7 +836,7 @@ label {
   font-weight: bold;
 }
 label.required {
-  background: url("/Sites/zend_basic/public/images/required.png") top right no-repeat;
+  background: url("/Sites/ClassProject/public/images/required.png") top right no-repeat;
 }
 textarea {
   display: inline-block;
@@ -1228,7 +1248,7 @@ form input.validation-failed {
   height: 16px;
   margin: 0px;
   padding: 0px;
-  background-image: url("/Sites/zend_basic/public/rialtoPublicLibrary/images/icons.png");
+  background-image: url("/Sites/ClassProject/public/rialtoPublicLibrary/images/icons.png");
   background-repeat: no-repeat;
   background-position: 0px -16px;
   margin-left: -8px;
@@ -1991,7 +2011,7 @@ form input.validation-failed {
   height: 16px;
   margin: 0px;
   padding: 0px;
-  background-image: url("/Sites/zend_basic/public/rialtoPublicLibrary/images/icons.png");
+  background-image: url("/Sites/ClassProject/public/rialtoPublicLibrary/images/icons.png");
   background-repeat: no-repeat;
   background-position: -80px -96px;
 }
@@ -2009,7 +2029,7 @@ form input.validation-failed {
   height: 16px;
   margin: 0px;
   padding: 0px;
-  background-image: url("/Sites/zend_basic/public/rialtoPublicLibrary/images/icons.png");
+  background-image: url("/Sites/ClassProject/public/rialtoPublicLibrary/images/icons.png");
   background-repeat: no-repeat;
   background-position: 0px -16px;
 }
@@ -2106,7 +2126,7 @@ form input.validation-failed {
 *****/
 /* ============================================= GENERAL ====================================== */
 body {
-  background: #f8efee url("/Sites/zend_basic/public/images/bg.gif") repeat top center;
+  background: #f8efee url("/Sites/ClassProject/public/images/bg.gif") repeat top center;
 }
 #wrapper {
   display: block;
@@ -2226,6 +2246,38 @@ nav.nav-main > ul > li {
 }
 .title-box .active {
   background-color: #EAE9E9;
+}
+.running-process {
+  border-top: 0px solid #cccccc;
+  border-right: 0px solid #cccccc;
+  border-bottom: 0px solid #cccccc;
+  border-left: 0px solid #cccccc;
+  border: 1px solid #cccccc;
+  margin-right: 5px !important;
+  margin-bottom: 5px !important;
+  display: inline-block !important;
+  width: auto;
+  vertical-align: top;
+}
+ul#users-online {
+  list-style: none;
+}
+ul#users-online li {
+  cursor: pointer;
+}
+ul#users-online li:hover {
+  background: #999;
+}
+.chat-frame {
+  float: left;
+  margin-left: 5px;
+  width: 200px;
+}
+.chat-frame textarea {
+  width: 100%;
+}
+.chat-frame input {
+  width: 100%;
 }
 /* ============================================= FOOTER ====================================== */
 footer {

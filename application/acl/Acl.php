@@ -25,6 +25,7 @@ class Application_Acl_Acl extends Zend_Acl
 			$this->addResource('partials');
 	    	$this->addResource('test');
 	    	$this->addResource('round-robin');
+	    	$this->addResource('online-chat');
 	
 			// authentication
 				$this->allow('guest', 'authentication', 'authenticate');
@@ -47,6 +48,7 @@ class Application_Acl_Acl extends Zend_Acl
 			// examples
 				$this->allow('guest', 'examples');
 				$this->allow('guest', 'round-robin');
+				$this->allow('guest', 'online-chat');
 				$this->deny('guest', 'examples', 'no-access');
 				$this->allow('member', 'examples', 'no-access');
 				
