@@ -60,6 +60,23 @@ class Application_Process_WebSocket
 		
 		$logger->info('server chat rooms are '.Zend_Debug::dump($Server->chatRooms));
 		
+		
+		foreach($Server->chatRooms[$from][$to] as $id => $toClientID){
+			// for each to client, construct the template div// this isn't really the best case. 
+			$partialInjectionVariable = array('toName' => $from, 'fromName' =>$to);
+			self::appendPathConstants($partialInjectionVariable);
+			$template = Custom_Process_Partials::evalPartial('online-chat/partials/_chat.tpl', $partialInjectionVariable);
+			
+			$newData = self::constructMessage($data['type'], $data['message'], $from, $to, null, null, $template);
+			
+			$Server->wsSend($toClientID, $newData); // send to all the receipient
+		}
+		
+		$newData = self::constructMessage($data['type'], $data['message'], $from, $to);
+		$logger->info('server sent info from user chat ------>'.$newData);
+		$Server->wsSend($clientID, $newData); // send to self
+		
+		
 	}
 	
 	// when a client connects
@@ -133,8 +150,8 @@ class Application_Process_WebSocket
 			$Server->wsSend($id, "Visitor $clientID ($ip) has left the room.");
 	}
 	
-	static public function constructMessage($type, $message, $from, $to=null, $fromUniqueName, $func=null){
-		$newMessage = array('type' => $type, 'from' => $from, 'to' =>$to, 'message'=>$message, 'fromUniqueName'=>$fromUniqueName, 'func'=>$func);
+	static public function constructMessage($type, $message, $from, $to=null, $fromUniqueName, $func=null, $divs=null){
+		$newMessage = array('type' => $type, 'from' => $from, 'to' =>$to, 'message'=>$message, 'fromUniqueName'=>$fromUniqueName, 'func'=>$func, 'divs'=>$divs);
 		return $encodedMessage = json_encode($newMessage);
 	}
 	

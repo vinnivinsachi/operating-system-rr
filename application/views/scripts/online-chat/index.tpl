@@ -22,21 +22,31 @@
 		//console.log(element);
 		statusLog('Connecting...');
 		
-		Server = new FancyWebSocket('ws://localhost:9300/?uniqueName=blahName');
+		Server = new FancyWebSocket('ws://localhost:9300/');
 
-		$j('#message').keypress(function(e) {
+		$j('#main-chat').delegate(".message", "keypress", function(e){
 			if ( e.keyCode == 13 && this.value ) {
-				//log( 'You: ' + this.value );
-				Server.send( this.value );
+				currentElement = $(e.currentTarget);
 
-				$j(this).val('');
+				var from = currentElement.get('fromName');
+				var to = currentElement.get('toName');
+				var message = currentElement.get('value');
+
+				data = {
+						type: 'chatWith',
+						message: message,
+						from:	from,
+						to:		to,						
+					};
+
+					//server.send(JSON.encode(data));
+					Server.send('message', JSON.encode(data));
 			}
-		});
+	    });
 
 		//Let the user know we're connected
 		Server.bind('open', function() {
 			statusLog( "Connected" );
-			
 			
 		});
 
@@ -55,6 +65,28 @@
 					console.log(element);
 					$('users-online').adopt(element);
 				});
+			}else if (data.type=='chatWith'){
+				console.log('return data with cath with: ');
+				console.log(data);
+				console.log('here at chat with friend : '+Server.uniqueName);
+				//if(data.message != ''){
+					if(data.from == Server.uniqueName){ // message sent to self
+						var messageElement = $('with-'+data.to);
+						var message = Elements.from('<li>You : '+data.message+'</li>');
+					}else{
+						var messageElement = $('with-'+data.from);
+						if(!messageElement){
+							messageElement = Elements.from(data.divs)[0];
+							console.log('here at messageElment received:');
+							$('main-chat').adopt(messageElement);
+						}
+						var message = Elements.from('<li>From '+data.from+' : '+data.message+'</li>');
+						
+					}
+					messageElement.getElement('.log').adopt(message[0]);
+					
+			
+
 			}else{
 				console.log(data);
 			}
@@ -89,10 +121,10 @@
 
 	function connectingUser(data, server){
 
-		userElement = $('users-online').getElements("li[uniqueName="+data.from+"]")[0];
+		var userElement = $('users-online').getElements("li[uniqueName="+data.from+"]")[0];
 		//userElment 
 		console.log('trying to set up connecting user');
-		uniqueName = $('connectingUser').get('connectedAs');
+		var uniqueName = $('connectingUser').get('connectedAs');
 
 		data = {
 			type: 'setUpUniqueName',
@@ -101,7 +133,7 @@
 			to:		'',
 			uniqueName:	uniqueName
 		};
-
+		server.uniqueName = uniqueName;
 		//server.send(JSON.encode(data));
 		server.send('message', JSON.encode(data));
 	}
@@ -112,53 +144,6 @@
 		$log.set('text', text);
 	}
 
-	function startWebSocket(){
-		var Server;
-
-		function log( text ) {
-			$log = $j('#log');
-			//Add text to log
-			$log.append(($log.val()?"\n":'')+text); // appending log information.
-			//Autoscroll
-			$log[0].scrollTop = $log[0].scrollHeight - $log[0].clientHeight;
-		}
-
-		function send( text ) {
-			Server.send( 'message', text );
-		}
-
-		$j(document).ready(function() {
-			log('Connecting...');
-			Server = new FancyWebSocket('ws://localhost:9300');
-
-			$j('#message').keypress(function(e) {
-				if ( e.keyCode == 13 && this.value ) {
-					log( 'You: ' + this.value );
-					send( this.value );
-
-					$j(this).val('');
-				}
-			});
-
-			//Let the user know we're connected
-			Server.bind('open', function() {
-				log( "Connected." );
-			});
-
-			//OH NOES! Disconnection occurred.
-			Server.bind('close', function( data ) {
-				log( "Disconnected." );
-			});
-
-			//Log any messages sent from server
-			Server.bind('message', function( payload ) {
-				log( payload );
-			});
-
-			Server.connect();
-		});
-
-	}
 	</script>
 
 {/literal}
