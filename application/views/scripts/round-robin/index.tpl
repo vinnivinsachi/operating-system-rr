@@ -53,8 +53,22 @@
 	</div>
 	
 	
+	<div class='hidden' >
+	
+		<div id='ending-process-tmplate' class='bordered title-box inline-block margin-right-small margin-bottom-small' style='height: 100px; width: 150px;'>
+			<h1>Process <span data-bind='process_id'></span></h1>
+			<div class='title-box-content'>
+				Process time: <span class='process-time' data-bind='process_time'></span> sec<br/>
+				Start time: <span class='start-time' data-bind='start_time'></span> sec<br/>
+				End time: <span class='start-time' data-bind='end_time'></span> sec<br/>
+			</div>
+		</div>
+	</div>
+	
 	
 </div>
+
+
 
 <script src="{$dirRialtoPublicLibrary}/js/mootools/plugins/MTE/mte.js"></script> 
 <script src="{$dirRialtoPublicLibrary}/js/mootools/plugins/MTE/mte.markup.js"></script> 
